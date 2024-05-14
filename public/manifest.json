@@ -1,5 +1,5 @@
 {
-    "name":"bg-coloor",
+    "name":"paintLab",
     "version":"0.1",
     "manifest_version":3,
     "description":"Background changer extension",
@@ -7,7 +7,8 @@
         "default_popup":"index.html"
     },
     "permissions":[
-        "scripting"
+        "scripting",
+        "activeTab"
     ],
     "host_permissions":[
         "http://*/*",

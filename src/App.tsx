@@ -1,33 +1,46 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import Logo from './assets/logo.webp'
 import './App.css'
+import { useState } from 'react'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [color, setColor] = useState('#000000');
+
+  const handleClick = async()=>{
+    const [tab] = await chrome.tabs.query({active:true});
+    console.log(tab)
+    chrome.scripting.executeScript({
+      target:{tabId: tab.id!},
+      args:[color],
+      func:(color)=>{
+        document.body.style.backgroundColor = color;
+      }
+    })
+  }
 
   return (
     <>
       <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
+        <a target="_blank">
+          <img src={Logo} className="logo react" alt="logo" />
         </a>
       </div>
-      <h1>Vite + React</h1>
+      <h1>Paint Lab</h1>
       <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
+        <input type='color' onChange={(e)=>setColor(e.target.value)}/>
+        <h1>{color}</h1>
+        <button onClick={handleClick}>
+          Clicke Me
         </button>
         <p>
           Edit <code>src/App.tsx</code> and save to test HMR
         </p>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <a href="https://github.com/muhammed-anas-na/" target='_blank'>
+        GitHub
+      </a>
+      <a href="https://www.linkedin.com/in/anas-na-285267209/" target='_blank'>
+        LinkedIn
+      </a>
     </>
   )
 }
