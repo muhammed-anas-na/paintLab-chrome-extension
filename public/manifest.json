@@ -1,0 +1,16 @@
+{
+    "name":"bg-coloor",
+    "version":"0.1",
+    "manifest_version":3,
+    "description":"Background changer extension",
+    "action":{
+        "default_popup":"index.html"
+    },
+    "permissions":[
+        "scripting"
+    ],
+    "host_permissions":[
+        "http://*/*",
+        "https://*/*"
+    ]
+}
